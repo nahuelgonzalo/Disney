@@ -23,7 +23,7 @@ import alkemy.challenge.Challenge.Alkemy.dto.PersonajeDTO;
 import alkemy.challenge.Challenge.Alkemy.service.PersonajeService;
 
 @RestController
-@RequestMapping("/personajes")
+@RequestMapping("/characters")
 public class PersonajeRest {
 	
 	@Autowired
@@ -68,7 +68,7 @@ public class PersonajeRest {
 	}
 	
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<PersonajeDTO> detallePersonaje(@PathParam("id") Long id){
+	public ResponseEntity<PersonajeDTO> getPersonaje(@PathParam("id") Long id){
 		PersonajeDTO personaje = personajeService.getPersonaje(id);
 		return ResponseEntity.ok(personaje);
 	}

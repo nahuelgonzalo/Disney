@@ -2,6 +2,7 @@ package alkemy.challenge.Challenge.Alkemy.dto;
 
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -30,7 +31,7 @@ public class PersonajeDTO {
 	
 	private String historia;
 	
-	private List<Pelicula> peliculas;
+	private List<PeliculaDTO> peliculas;
 	
 	public Personaje buildEntity() {
 		return Personaje.builder()
@@ -61,6 +62,16 @@ public class PersonajeDTO {
 				.peso(entity.getPeso())
 				.historia(entity.getHistoria())
 				.build();
+	}
+	
+	public static PersonajeDTO fromWithPeliculas(Personaje entity) {
+		PersonajeDTO personajeDTO = from(entity);
+		personajeDTO.setPeliculas(getPeliculas(entity.getPeliculas()));
+		return personajeDTO;
+	}
+	
+	private static List<PeliculaDTO> getPeliculas(List<Pelicula> entities){
+		return entities.stream().map(pelicula -> PeliculaDTO.from(pelicula)).collect(Collectors.toList());
 	}
 	
 	

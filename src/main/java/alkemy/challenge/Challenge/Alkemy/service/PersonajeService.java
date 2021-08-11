@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,7 @@ import alkemy.challenge.Challenge.Alkemy.model.Personaje;
 import alkemy.challenge.Challenge.Alkemy.repository.PersonajeRepository;
 
 @Service
+@Transactional
 public class PersonajeService {
 	
 	@Autowired
